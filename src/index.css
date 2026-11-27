@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Fraunces Variable", Fraunces, Georgia, serif;
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-on-brand: var(--on-brand);
+  --color-cash: var(--cash);
+  --color-cash-soft: var(--cash-soft);
+  --color-wait: var(--wait);
+  --color-wait-soft: var(--wait-soft);
+  --color-due: var(--due);
+  --color-due-soft: var(--due-soft);
+  --color-out: var(--out);
+  --color-out-soft: var(--out-soft);
+  --color-accent: var(--accent);
+}
+
+:root {
+  --paper: #f6f3ee;
+  --card: #fffcf9;
+  --ink: #2c2824;
+  --muted: #6d645c;
+  --line: #e4dcd2;
+  --brand: #7a5344;
+  --on-brand: #fffaf6;
+  --cash: #1c7a48;
+  --cash-soft: #e6f4ec;
+  --out: #c45c34;
+  --out-soft: #fbe7de;
+  --wait: #8d6220;
+  --wait-soft: #f7efdc;
+  --due: #a33b32;
+  --due-soft: #f8e4e1;
+  --accent: #7a5344;
+  --wash:
+    radial-gradient(720px 380px at 0% 0%, #efe4d6 0%, transparent 60%),
+    radial-gradient(640px 360px at 100% 100%, #e5f0e8 0%, transparent 55%);
+  color-scheme: light;
+}
+
+.dark {
+  --paper: #1c1916;
+  --card: #282420;
+  --ink: #f6f1ea;
+  --muted: #d4c8bc;
+  --line: #3d352f;
+  --brand: #e7c2b2;
+  --on-brand: #2c1812;
+  --cash: #8fd4ae;
+  --cash-soft: #163528;
+  --out: #f0a07a;
+  --out-soft: #3d2418;
+  --wait: #e6c48a;
+  --wait-soft: #3a2c14;
+  --due: #f0b0a8;
+  --due-soft: #3d2220;
+  --accent: #e7c2b2;
+  --wash:
+    radial-gradient(720px 380px at 0% 0%, rgba(196, 92, 52, 0.16) 0%, transparent 58%),
+    radial-gradient(640px 360px at 100% 100%, rgba(28, 122, 72, 0.14) 0%, transparent 55%);
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  background-image: var(--wash);
+  color: var(--ink);
+  font-family: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #eadfce;
+  color: #2c2824;
+}
+
+.brand-gradient {
+  background: var(--brand);
+  color: var(--on-brand);
+}
+
+.meter-brand {
+  background: var(--brand);
+}
+
+.rounded-3xl.bg-card {
+  box-shadow: 0 18px 40px -28px rgba(90, 24, 48, 0.55);
+}
+
+.dark .rounded-3xl.bg-card {
+  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.6);
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.report-paper {
+  --paper: #ffffff;
+  --card: #ffffff;
+  --ink: #241828;
+  --muted: #6a5164;
+  --line: #f0d0c2;
+  --brand: #2c2824;
+  --on-brand: #fffaf6;
+  --cash: #1c7a48;
+  --cash-soft: #e6f4ec;
+  --out: #c45c34;
+  --out-soft: #fbe7de;
+  --wait: #8d6220;
+  --wait-soft: #f7efdc;
+  --due: #a33b32;
+  --due-soft: #f8e4e1;
+  --accent: #7a5344;
+  --wash: none;
+  background: white;
+  color: #241828;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media print {
+  body {
+    background: white !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .report-paper {
+    box-shadow: none !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  .report-block {
+    break-inside: avoid;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 12mm;
+}
